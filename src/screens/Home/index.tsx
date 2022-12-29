@@ -1,4 +1,5 @@
 import {Button, Icon} from '@rneui/themed';
+import {CardComponent} from 'Components';
 import {Scaling} from 'Styles';
 import * as React from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
@@ -36,13 +37,9 @@ const Home = (): JSX.Element => {
           padding: Scaling.Width(20),
         }}>
         <FlatList
-          data={[1, 2, 3, 4, 5]}
+          data={[1]}
           showsVerticalScrollIndicator={false}
-          renderItem={() => (
-            <View>
-              <Text>Item</Text>
-            </View>
-          )}
+          renderItem={() => <CardComponent />}
         />
       </View>
       {/* body end */}

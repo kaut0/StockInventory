@@ -1,5 +1,7 @@
 import Axios, {AxiosResponse, AxiosError} from 'axios';
 
+const BASE_URL: string = 'ini url';
+
 Axios.interceptors.request.use(
   (config: any) => {
     return config;
@@ -13,7 +15,7 @@ export const GetRequest = async (
   url: string,
   config: any = null,
 ): Promise<any> => {
-  Axios.get(url, config)
+  Axios.get(`${BASE_URL}/${url}`, config)
     .then((response: AxiosResponse<any>): any => {
       return response;
     })
@@ -25,7 +27,7 @@ export const PostRequest = async (
   data: any,
   config: any = null,
 ): Promise<void> => {
-  return Axios.post(url, data, config)
+  return Axios.post(`${BASE_URL}/${url}`, data, config)
     .then((response: AxiosResponse<any>): any => {
       return response;
     })
