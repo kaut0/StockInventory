@@ -1,3 +1,4 @@
+import AddItem from './AddItem';
 import Home from './Home';
 
-export {Home};
+export {Home, AddItem};

@@ -10,7 +10,9 @@ module.exports = {
           "Components": ["./src/components/index"],
           "Screens": ["./src/screens/index"],
           "Styles": ["./src/styles/index"],
-          "Assets": ["./src/assets/*"]
+          "Assets": ["./src/assets/*"],
+          "Constants": ["./src/constant/*"],
+          "Routers": ["./src/router/index"]
         }
       }
     ]

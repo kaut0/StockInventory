@@ -3,12 +3,17 @@ import {CardComponent} from 'Components';
 import {Scaling} from 'Styles';
 import * as React from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import useHome from './useHome';
+import {useNavigation} from '@react-navigation/native';
 const Home = (): JSX.Element => {
+  const navigation: any = useNavigation();
+  const [data] = useHome();
   return (
     <View
       style={{
         backgroundColor: 'white',
         flex: 1,
+        paddingBottom: Scaling.Height(100),
       }}>
       {/* ini headers */}
       <View
@@ -27,19 +32,28 @@ const Home = (): JSX.Element => {
           Home
         </Text>
         <TouchableOpacity>
-          <Icon name="sc-telegram" type="evilicon" color="#517fa4" />
+          <Icon name="cart" type="evilicon" color="white" />
         </TouchableOpacity>
       </View>
       {/* end headers */}
       {/* body start */}
       <View
         style={{
-          padding: Scaling.Width(20),
+          paddingHorizontal: Scaling.Width(20),
         }}>
         <FlatList
-          data={[1]}
+          data={data}
           showsVerticalScrollIndicator={false}
-          renderItem={() => <CardComponent />}
+          renderItem={({item}) => (
+            <CardComponent
+              title={item.nama_barang}
+              desc={item.deskripsi}
+              quantyty={item.quantyty}
+              onPress={() => {
+                console.log('makan');
+              }}
+            />
+          )}
         />
       </View>
       {/* body end */}
@@ -52,7 +66,7 @@ const Home = (): JSX.Element => {
         }}>
         <Button
           onPress={() => {
-            console.log('makan');
+            navigation.navigate('AddItem');
           }}
           buttonStyle={{
             height: Scaling.Height(75),
@@ -61,7 +75,7 @@ const Home = (): JSX.Element => {
             alignItems: 'center',
           }}
           icon={{
-            name: 'home',
+            name: 'plus',
             type: 'font-awesome',
             size: 35,
             color: 'white',

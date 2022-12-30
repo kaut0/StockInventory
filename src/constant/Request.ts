@@ -1,6 +1,6 @@
 import Axios, {AxiosResponse, AxiosError} from 'axios';
 
-const BASE_URL: string = 'ini url';
+const BASE_URL: string = 'https://a005-110-136-216-104.ngrok.io';
 
 Axios.interceptors.request.use(
   (config: any) => {
@@ -15,7 +15,7 @@ export const GetRequest = async (
   url: string,
   config: any = null,
 ): Promise<any> => {
-  Axios.get(`${BASE_URL}/${url}`, config)
+  return Axios.get(`${BASE_URL}/api/${url}`, config)
     .then((response: AxiosResponse<any>): any => {
       return response;
     })
@@ -26,8 +26,8 @@ export const PostRequest = async (
   url: string,
   data: any,
   config: any = null,
-): Promise<void> => {
-  return Axios.post(`${BASE_URL}/${url}`, data, config)
+): Promise<any> => {
+  return Axios.post(`${BASE_URL}/api/${url}`, data, config)
     .then((response: AxiosResponse<any>): any => {
       return response;
     })
