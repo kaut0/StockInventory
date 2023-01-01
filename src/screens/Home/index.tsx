@@ -5,9 +5,11 @@ import * as React from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import useHome from './useHome';
 import {useNavigation} from '@react-navigation/native';
+import {useAppSelector} from '../../redux/Hooks';
 const Home = (): JSX.Element => {
   const navigation: any = useNavigation();
   const [data] = useHome();
+  const cartData = useAppSelector(state => state.cart.data);
   return (
     <View
       style={{
