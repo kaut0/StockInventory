@@ -31,7 +31,10 @@ const Home = (): JSX.Element => {
           }}>
           Home
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Cart');
+          }}>
           <Icon name="cart" type="evilicon" color="white" />
         </TouchableOpacity>
       </View>
