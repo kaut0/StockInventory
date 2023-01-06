@@ -1,18 +1,20 @@
-import {Button, Card, Icon} from '@rneui/themed';
+import {Button, Card, Icon, Input} from '@rneui/themed';
 import {Scaling} from 'Styles';
 import * as React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
 
 const CardComponent = ({
   title,
   desc,
   quantyty,
   onPress,
+  onChange,
 }: {
   title: string;
   desc: string;
   quantyty: number;
   onPress: any;
+  onChange: any;
 }): JSX.Element => {
   return (
     <View>
@@ -45,7 +47,19 @@ const CardComponent = ({
             </Button>
           </View>
           <Text>{desc}</Text>
-          <Text>Quantity: {quantyty}</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <Text>Quantity: {quantyty}</Text>
+            <TextInput
+              placeholder="0"
+              keyboardType="numeric"
+              onChangeText={onChange}
+            />
+          </View>
         </View>
       </Card>
     </View>

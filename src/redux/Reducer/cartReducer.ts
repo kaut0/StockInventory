@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {PayloadAction, createSlice} from '@reduxjs/toolkit';
 export interface dataCart {
   data: any;
 }
@@ -11,7 +11,9 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    cartData: state => {},
+    cartData: (state, action: PayloadAction<any>) => {
+      state.data = [...state.data, action.payload];
+    },
   },
 });
 

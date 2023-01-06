@@ -1,6 +1,6 @@
 import Axios, {AxiosResponse, AxiosError} from 'axios';
 
-const BASE_URL: string = 'https://a005-110-136-216-104.ngrok.io';
+const BASE_URL: string = 'https://6ff2-180-249-157-132.ngrok.io';
 
 Axios.interceptors.request.use(
   (config: any) => {

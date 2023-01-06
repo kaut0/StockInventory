@@ -14,7 +14,7 @@ module.exports = {
           "Constants": ["./src/constant/*"],
           "Routers": ["./src/router/index"]
         }
-      }
+      },
     ]
   ]
 };

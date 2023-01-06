@@ -12,8 +12,8 @@
       "Screens":["src/screens/index"],
       "Styles":["src/styles/index"],
       "Assets":["src/assets/*"],
-      "Constants":["src/constant/*"],
-      "Routers":["src/router/index"]
+      "Constants":["src/constant/"],
+      "Routers":["src/router/index"],
     },
   }
 }

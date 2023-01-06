@@ -1,15 +1,13 @@
-import {Button, Icon} from '@rneui/themed';
+import {Badge, Button, Icon} from '@rneui/themed';
 import {CardComponent} from 'Components';
 import {Scaling} from 'Styles';
 import * as React from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import useHome from './useHome';
 import {useNavigation} from '@react-navigation/native';
-import {useAppSelector} from '../../redux/Hooks';
 const Home = (): JSX.Element => {
   const navigation: any = useNavigation();
-  const [data] = useHome();
-  const cartData = useAppSelector(state => state.cart.data);
+  const [data, addToCart, getQuantyty, setQuantyty, dataCart] = useHome();
   return (
     <View
       style={{
@@ -37,7 +35,23 @@ const Home = (): JSX.Element => {
           onPress={() => {
             navigation.navigate('Cart');
           }}>
-          <Icon name="cart" type="evilicon" color="white" />
+          <Icon
+            name="cart"
+            size={Scaling.Width(40)}
+            type="evilicon"
+            color="white"
+          />
+          {dataCart.length > 0 && (
+            <Badge
+              value={dataCart.length}
+              status="success"
+              containerStyle={{
+                position: 'absolute',
+                top: Scaling.Height(0),
+                right: Scaling.Width(2),
+              }}
+            />
+          )}
         </TouchableOpacity>
       </View>
       {/* end headers */}
@@ -49,13 +63,18 @@ const Home = (): JSX.Element => {
         <FlatList
           data={data}
           showsVerticalScrollIndicator={false}
-          renderItem={({item}) => (
+          renderItem={({item, index}) => (
             <CardComponent
               title={item.nama_barang}
               desc={item.deskripsi}
               quantyty={item.quantyty}
+              onChange={(text: number) => {
+                let value = [...getQuantyty];
+                value[index] = text;
+                setQuantyty(value);
+              }}
               onPress={() => {
-                console.log('makan');
+                addToCart(item, index);
               }}
             />
           )}
