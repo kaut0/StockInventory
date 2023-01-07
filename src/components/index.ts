@@ -1,3 +1,4 @@
+import CardCartComponent from './CardCartComponent';
 import CardComponent from './CardComponent';
 
-export {CardComponent};
+export {CardComponent, CardCartComponent};
