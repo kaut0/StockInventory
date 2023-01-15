@@ -9,12 +9,16 @@ const CardComponent = ({
   quantyty,
   onPress,
   onChange,
+  onDelete,
+  onEdit,
 }: {
   title: string;
   desc: string;
   quantyty: number;
   onPress: any;
   onChange: any;
+  onDelete: any;
+  onEdit: any;
 }): JSX.Element => {
   return (
     <View>
@@ -23,6 +27,31 @@ const CardComponent = ({
           borderRadius: Scaling.Width(16),
         }}>
         <View>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignSelf: 'flex-end',
+              marginBottom: Scaling.Height(10),
+              justifyContent: 'space-between',
+              width: Scaling.Width(100),
+            }}>
+            <Button onPress={onEdit} type="clear">
+              <Icon
+                name="edit"
+                type="material-icon"
+                color="green"
+                size={Scaling.Width(20)}
+              />
+            </Button>
+            <Button onPress={onDelete} type="clear">
+              <Icon
+                name="delete"
+                type="material-icon"
+                color="red"
+                size={Scaling.Width(20)}
+              />
+            </Button>
+          </View>
           <View
             style={{
               flexDirection: 'row',
